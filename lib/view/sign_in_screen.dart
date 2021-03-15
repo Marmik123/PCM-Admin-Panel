@@ -136,7 +136,7 @@ class SignIn extends StatelessWidget {
                           SizedBox(
                             height: 20,
                           ),
-                          GestureDetector(
+                          /* GestureDetector(
                             onTap: () {
                               loginCtrl.forgotPassword.value = true;
                             },
@@ -147,7 +147,7 @@ class SignIn extends StatelessWidget {
                                   fontSize: 20,
                                   fontWeight: FontWeight.w500),
                             ),
-                          )
+                          )*/
                         ],
                       ),
               ),

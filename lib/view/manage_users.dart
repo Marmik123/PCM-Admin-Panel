@@ -16,17 +16,25 @@ class ManageUsers extends StatelessWidget {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          bottom: TabBar(
+          leading: Container(),
+          title: TabBar(
             onTap: (value) {
+              if (value == 0) {
+                userCtrl.selectedIndex.value = 0;
+              } else if (value == 1) {
+                userCtrl.selectedIndex.value = 1;
+              } else if (value == 2) {
+                userCtrl.selectedIndex.value = 2;
+              } else {
+                userCtrl.selectedIndex.value = 3;
+              }
               value == 0
                   ? userCtrl.loadUser(userCtrl.clientInfo)
                   : value == 1
                       ? userCtrl.loadUser(userCtrl.distInfo)
                       : value == 2
                           ? userCtrl.loadUser(userCtrl.salesInfo)
-                          : value == 3
-                              ? userCtrl.loadUser(userCtrl.delInfo)
-                              : null;
+                          : userCtrl.loadUser(userCtrl.delInfo);
             },
             tabs: [
               Tab(

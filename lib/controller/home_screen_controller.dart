@@ -22,7 +22,7 @@ class HomeScreenController extends GetxController {
     super.onInit();
     adCtrl.loadAdData();
     fbCtrl.loadFeedBack();
-    userCtrl.loadUser(userCtrl.distInfo);
+    userCtrl.loadUser(userCtrl.clientInfo);
     proCtrl.loadPro();
     sCtrl.loadData();
   }

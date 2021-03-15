@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pcm_admin/app_config.dart';
+import 'package:pcm_admin/controller/users_controller.dart';
 import 'package:pcm_admin/widgets/circular_loader.dart';
 import 'package:pcm_admin/widgets/form_screen.dart';
 
 displayDialog(BuildContext context, ctrl) {
+  UserController userCtrl = Get.put(UserController());
   final theme = Theme.of(context);
   return Get.defaultDialog(
     confirm: ctrl.isLoading.value
@@ -14,11 +16,34 @@ displayDialog(BuildContext context, ctrl) {
             child: buildLoader(),
           )
         : button(
-            onTap: () {
+            onTap:
+                /*userCtrl.editUserFlag.value
+                ? () {
+                    if (ctrl.formKey.currentState.validate()) {
+                      ctrl.selectedIndex.value == 0
+                          ? ctrl.editUser("Client")
+                          : ctrl.selectedIndex.value == 1
+                              ? ctrl.editUser("Distributor")
+                              : ctrl.selectedIndex.value == 2
+                                  ? ctrl.editUser("SalesPerson")
+                                  : ctrl.editUser("DeliveryBoy");
+                      Get.back();
+                      ctrl.fileList.removeRange(0, ctrl.fileList?.length);
+                    } else
+                      return null;
+                  }
+                :*/
+                () {
               if (ctrl.formKey.currentState.validate()) {
-                ctrl.registerUser();
+                ctrl.selectedIndex.value == 0
+                    ? ctrl.registerUser("Client")
+                    : ctrl.selectedIndex.value == 1
+                        ? ctrl.registerUser("Distributor")
+                        : ctrl.selectedIndex.value == 2
+                            ? ctrl.registerUser("SalesPerson")
+                            : ctrl.registerUser("DeliveryBoy");
                 Get.back();
-                ctrl.ctrl.fileList.removeRange(0, ctrl.fileList?.length);
+                ctrl.fileList.removeRange(0, ctrl.fileList?.length);
               } else
                 return null;
             },
@@ -46,8 +71,6 @@ displayDialog(BuildContext context, ctrl) {
         "Enter Address",
         "Enter Mobile Number",
         "Enter Shop Name",
-        "Enter Shop Location",
-        "Enter Role",
       ].obs,
     ),
   );
