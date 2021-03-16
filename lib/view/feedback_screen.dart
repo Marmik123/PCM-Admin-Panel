@@ -31,52 +31,72 @@ class ViewFeedBack extends StatelessWidget {
                             sortAscending: true,
                             columns: [
                               DataColumn(
-                                label: SelectableText(
-                                  "Sr No.",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Sr No.",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "User Name",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "User Name",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Feedback Subject",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Feedback Subject",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Feedback Description",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Feedback Description",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Actions",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Actions",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -89,41 +109,49 @@ class ViewFeedBack extends StatelessWidget {
                                     SelectableText(
                                       "${index + 1}",
                                       style: kInterText.copyWith(
-                                        fontSize: 12,
+                                        fontSize: 10,
                                         color: theme.unselectedWidgetColor,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ),
                                   DataCell(
-                                    SelectableText(
-                                      fbCtrl.fbList()[index]['userData']
-                                              ['username'] ??
-                                          "-",
-                                      style: kInterText.copyWith(
-                                        fontSize: 12,
-                                        color: theme.unselectedWidgetColor,
-                                        fontWeight: FontWeight.w500,
+                                    FittedBox(
+                                      child: SelectableText(
+                                        fbCtrl.fbList()[index]['userData']
+                                                ['username'] ??
+                                            "-",
+                                        style: kInterText.copyWith(
+                                          fontSize: 10,
+                                          color: theme.unselectedWidgetColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ),
                                   DataCell(
-                                    SelectableText(
-                                      fbCtrl.fbList()[index]['subject'] ?? "-",
-                                      style: kInterText.copyWith(
-                                        fontSize: 12,
-                                        color: theme.unselectedWidgetColor,
-                                        fontWeight: FontWeight.w500,
+                                    FittedBox(
+                                      child: SelectableText(
+                                        fbCtrl.fbList()[index]['subject'] ??
+                                            "-",
+                                        style: kInterText.copyWith(
+                                          fontSize: 10,
+                                          color: theme.unselectedWidgetColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ),
                                   DataCell(
-                                    SelectableText(
-                                      fbCtrl.fbList()[index]['message'] ?? "-",
-                                      style: kInterText.copyWith(
-                                        fontSize: 12,
-                                        color: theme.unselectedWidgetColor,
-                                        fontWeight: FontWeight.w500,
+                                    FittedBox(
+                                      child: SelectableText(
+                                        fbCtrl.fbList()[index]['message'] ??
+                                            "-",
+                                        style: kInterText.copyWith(
+                                          fontSize: 10,
+                                          color: theme.unselectedWidgetColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -134,6 +162,7 @@ class ViewFeedBack extends StatelessWidget {
                                           padding: const EdgeInsets.all(8.0),
                                           child: IconButton(
                                             tooltip: "Delete feedback",
+                                            iconSize: 10,
                                             onPressed: () {
                                               Get.defaultDialog(
                                                 title:
@@ -145,7 +174,12 @@ class ViewFeedBack extends StatelessWidget {
                                                 ),
                                                 content: Column(
                                                   children: [
-                                                    TextButton(
+                                                    ElevatedButton(
+                                                        style: ButtonStyle(
+                                                            backgroundColor:
+                                                                MaterialStateProperty
+                                                                    .all(theme
+                                                                        .primaryColor)),
                                                         onPressed: () {
                                                           fbCtrl.deleteFeedBack(
                                                               fbCtrl.fbList()[
@@ -161,12 +195,20 @@ class ViewFeedBack extends StatelessWidget {
                                                               .copyWith(
                                                             color:
                                                                 theme.hintColor,
-                                                            fontSize: 15,
+                                                            fontSize: 10,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                           ),
                                                         )),
-                                                    TextButton(
+                                                    SizedBox(
+                                                      height: 5,
+                                                    ),
+                                                    ElevatedButton(
+                                                        style: ButtonStyle(
+                                                            backgroundColor:
+                                                                MaterialStateProperty
+                                                                    .all(theme
+                                                                        .primaryColor)),
                                                         onPressed: () {
                                                           Get.back();
                                                         },
@@ -176,7 +218,7 @@ class ViewFeedBack extends StatelessWidget {
                                                               .copyWith(
                                                             color:
                                                                 theme.hintColor,
-                                                            fontSize: 15,
+                                                            fontSize: 10,
                                                             fontWeight:
                                                                 FontWeight.w500,
                                                           ),

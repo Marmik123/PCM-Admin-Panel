@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pcm_admin/app_config.dart';
 import 'package:pcm_admin/controller/home_screen_controller.dart';
+import 'package:pcm_admin/controller/users_controller.dart';
 import 'package:pcm_admin/view/feedback_screen.dart';
 import 'package:pcm_admin/view/manage_advertisement.dart';
 import 'package:pcm_admin/view/manage_orders.dart';
@@ -12,6 +13,7 @@ import 'package:pcm_admin/view/support_details.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreenController userCtrl = Get.put(HomeScreenController());
+  UserController ctrl = Get.put(UserController());
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -70,29 +72,14 @@ class HomeScreen extends StatelessWidget {
                   )
                 : Container(
                     margin: EdgeInsets.only(right: 20),
-                    child: GestureDetector(
-                      onTap: () {
+                    child: IconButton(
+                      icon: Icon(Icons.login_outlined),
+                      iconSize: 30,
+                      onPressed: () {
                         Get.offAll(SignIn());
                       },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.login_outlined,
-                            size: 30,
-                            semanticLabel: "Logout",
-                            color: theme.accentColor,
-                          ),
-                          Text(
-                            "Logout",
-                            style: kInterText.copyWith(
-                              fontSize: 10,
-                              color: theme.accentColor,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                        ],
-                      ),
+                      tooltip: "Logout",
+                      color: theme.accentColor,
                     ),
                   ),
           ],
@@ -104,6 +91,7 @@ class HomeScreen extends StatelessWidget {
               minExtendedWidth: 150,
               onDestinationSelected: (int index) {
                 userCtrl.selectedIndex.value = index;
+                ctrl.loadUser(ctrl.clientInfo);
               },
               minWidth: 60,
               groupAlignment: 0,

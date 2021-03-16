@@ -1,4 +1,3 @@
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
@@ -37,6 +36,10 @@ class UserController extends GetxController {
         ..whereEqualTo('role', 'SalesPerson')
         ..includeObject(['shopName']);
 
+  /* void onInit() {
+    loadUser(clientInfo);
+  }*/
+
   Future<void> loadUser(QueryBuilder<ParseObject> role) async {
     /*if (role == distInfo) {
       typeOfRole.value = "Distributor";
@@ -60,6 +63,17 @@ class UserController extends GetxController {
         // ignore: deprecated_member_use
         distriInfo(result.results);
         //print("distrinfo called ${distriInfo[0].get('shop').get('shopName')}");
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
       }
     } catch (e) {
       isLoading.value = false;
@@ -100,8 +114,18 @@ class UserController extends GetxController {
         } else {
           loadUser(delInfo);
         }
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
@@ -141,8 +165,18 @@ class UserController extends GetxController {
           loadUser(delInfo);
         }
         Get.back();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
@@ -160,8 +194,9 @@ class UserController extends GetxController {
     }
   }
 
+/*
   Future<void> chooseFile() async {
-    FilePickerResult result = await FilePicker.platform.pickFiles();
+    //FilePickerResult result = await FilePicker.platform.pickFiles();
 
     if (result != null) {
       print(result);
@@ -169,17 +204,29 @@ class UserController extends GetxController {
         print('try executed');
         var file = Image.memory(result.files.single.bytes);
         print(file);
-        /* filename = result.files.single.name;
+        */
+/* filename = result.files.single.name;
         print(filename);
         fileList.add(file);
         print(fileList.length);
-        print('sdsssdsds $fileList');*/
+        print('sdsssdsds $fileList');*/ /*
+
       } catch (e) {
         print(e);
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
         return e;
       }
     } else {
       // User canceled the picker
     }
   }
+*/
 }

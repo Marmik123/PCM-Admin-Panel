@@ -15,7 +15,7 @@ class ManageAdvertise extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-            height: 10,
+            height: 8,
           ),
           button(
               buttonColor: theme.buttonColor,
@@ -40,7 +40,7 @@ class ManageAdvertise extends StatelessWidget {
                           buttonTxt: "Save",
                           buttonColor: theme.buttonColor,
                           txtColor: theme.primaryColorDark,
-                          txtSize: 15,
+                          txtSize: 8,
                         ),
                   title: "Enter Details",
                   content: FormDialog(
@@ -66,42 +66,50 @@ class ManageAdvertise extends StatelessWidget {
                         ? DataTable(
                             columns: [
                               DataColumn(
-                                label: SelectableText(
-                                  "Sr No.",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: SelectableText(
+                                    "Sr No.",
+                                    style: kInterText.copyWith(
+                                      fontSize: 8,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Advertise Name",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: SelectableText(
+                                    "Advertise Name",
+                                    style: kInterText.copyWith(
+                                      fontSize: 8,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Description",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: SelectableText(
+                                    "Description",
+                                    style: kInterText.copyWith(
+                                      fontSize: 8,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Actions",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: SelectableText(
+                                    "Actions",
+                                    style: kInterText.copyWith(
+                                      fontSize: 8,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -116,30 +124,35 @@ class ManageAdvertise extends StatelessWidget {
                                     SelectableText(
                                       "${index + 1}",
                                       style: kInterText.copyWith(
-                                        fontSize: 12,
+                                        fontSize: 8,
                                         color: theme.unselectedWidgetColor,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ),
                                   DataCell(
-                                    SelectableText(
-                                      adCtrl.adsData[index]['adName'] ?? "-",
-                                      style: kInterText.copyWith(
-                                        fontSize: 12,
-                                        color: theme.unselectedWidgetColor,
-                                        fontWeight: FontWeight.w500,
+                                    FittedBox(
+                                      child: SelectableText(
+                                        adCtrl.adsData[index]['adName'] ?? "-",
+                                        style: kInterText.copyWith(
+                                          fontSize: 8,
+                                          color: theme.unselectedWidgetColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ),
                                   DataCell(
-                                    SelectableText(
-                                      adCtrl.adsData[index]['adDescription'] ??
-                                          "-",
-                                      style: kInterText.copyWith(
-                                        fontSize: 12,
-                                        color: theme.unselectedWidgetColor,
-                                        fontWeight: FontWeight.w500,
+                                    FittedBox(
+                                      child: SelectableText(
+                                        adCtrl.adsData[index]
+                                                ['adDescription'] ??
+                                            "-",
+                                        style: kInterText.copyWith(
+                                          fontSize: 8,
+                                          color: theme.unselectedWidgetColor,
+                                          fontWeight: FontWeight.w500,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -149,45 +162,46 @@ class ManageAdvertise extends StatelessWidget {
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: IconButton(
-                                              tooltip: "Edit Ad",
-                                              onPressed: () {
-                                                Get.defaultDialog(
-                                                  confirm: adCtrl
-                                                          .isLoading.value
-                                                      ? Container(
-                                                          height: 30,
-                                                          width: 30,
-                                                          child: buildLoader(),
-                                                        )
-                                                      : button(
-                                                          onTap: () {
-                                                            if (adCtrl.formKey
-                                                                .currentState
-                                                                .validate()) {
-                                                              adCtrl.editAd(
-                                                                  adCtrl.adsData[
-                                                                      index]);
-                                                              Get.back();
-                                                            } else
-                                                              return null;
-                                                          },
-                                                          buttonTxt: "Save",
-                                                          buttonColor:
-                                                              theme.buttonColor,
-                                                          txtColor: theme
-                                                              .primaryColorDark,
-                                                          txtSize: 15,
-                                                        ),
-                                                  title: "Edit Details",
-                                                  content: FormDialog(
-                                                    labelText: [
-                                                      "Enter Ad Name",
-                                                      "Enter Ad Description"
-                                                    ].obs,
-                                                  ),
-                                                );
-                                              },
-                                              icon: Icon(Icons.edit_outlined)),
+                                            tooltip: "Edit Ad",
+                                            onPressed: () {
+                                              Get.defaultDialog(
+                                                confirm: adCtrl.isLoading.value
+                                                    ? Container(
+                                                        height: 30,
+                                                        width: 30,
+                                                        child: buildLoader(),
+                                                      )
+                                                    : button(
+                                                        onTap: () {
+                                                          if (adCtrl.formKey
+                                                              .currentState
+                                                              .validate()) {
+                                                            adCtrl.editAd(
+                                                                adCtrl.adsData[
+                                                                    index]);
+                                                            Get.back();
+                                                          } else
+                                                            return null;
+                                                        },
+                                                        buttonTxt: "Save",
+                                                        buttonColor:
+                                                            theme.buttonColor,
+                                                        txtColor: theme
+                                                            .primaryColorDark,
+                                                        txtSize: 8,
+                                                      ),
+                                                title: "Edit Details",
+                                                content: FormDialog(
+                                                  labelText: [
+                                                    "Enter Ad Name",
+                                                    "Enter Ad Description"
+                                                  ].obs,
+                                                ),
+                                              );
+                                            },
+                                            icon: Icon(Icons.edit_outlined),
+                                            iconSize: 8,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 5,
@@ -206,7 +220,12 @@ class ManageAdvertise extends StatelessWidget {
                                               ),
                                               content: Column(
                                                 children: [
-                                                  TextButton(
+                                                  ElevatedButton(
+                                                      style: ButtonStyle(
+                                                          backgroundColor:
+                                                              MaterialStateProperty
+                                                                  .all(theme
+                                                                      .primaryColor)),
                                                       onPressed: () {
                                                         adCtrl.deleteAd(adCtrl
                                                             .adsData[index]);
@@ -220,15 +239,20 @@ class ManageAdvertise extends StatelessWidget {
                                                             kInterText.copyWith(
                                                           color:
                                                               theme.hintColor,
-                                                          fontSize: 15,
+                                                          fontSize: 8,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
                                                       )),
                                                   SizedBox(
-                                                    height: 15,
+                                                    height: 8,
                                                   ),
-                                                  TextButton(
+                                                  ElevatedButton(
+                                                      style: ButtonStyle(
+                                                          backgroundColor:
+                                                              MaterialStateProperty
+                                                                  .all(theme
+                                                                      .primaryColor)),
                                                       onPressed: () {
                                                         Get.back();
                                                       },
@@ -238,7 +262,7 @@ class ManageAdvertise extends StatelessWidget {
                                                             kInterText.copyWith(
                                                           color:
                                                               theme.hintColor,
-                                                          fontSize: 15,
+                                                          fontSize: 8,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -250,14 +274,11 @@ class ManageAdvertise extends StatelessWidget {
                                           icon: Icon(
                                             Icons.delete,
                                           ),
+                                          iconSize: 8,
                                         ),
                                         SizedBox(
                                           width: 5,
                                         ),
-                                        IconButton(
-                                            tooltip: "View Ad",
-                                            onPressed: () {},
-                                            icon: Icon(Icons.rate_review))
                                       ],
                                     ),
                                   ),

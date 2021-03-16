@@ -9,6 +9,7 @@ import 'package:pcm_admin/view/users/salesperson.dart';
 
 class ManageUsers extends StatelessWidget {
   UserController userCtrl = Get.put(UserController());
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -18,6 +19,8 @@ class ManageUsers extends StatelessWidget {
         appBar: AppBar(
           leading: Container(),
           title: TabBar(
+            automaticIndicatorColorAdjustment: true,
+            isScrollable: false,
             onTap: (value) {
               if (value == 0) {
                 userCtrl.selectedIndex.value = 0;
@@ -52,7 +55,7 @@ class ManageUsers extends StatelessWidget {
             ],
           ),
         ),
-        body: TabBarView(children: [
+        body: TabBarView(physics: NeverScrollableScrollPhysics(), children: [
           Client(),
           Distributor(),
           SalesPerson(),

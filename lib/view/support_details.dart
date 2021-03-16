@@ -40,7 +40,7 @@ class SupportScreen extends StatelessWidget {
                           buttonTxt: "Save",
                           buttonColor: theme.buttonColor,
                           txtColor: theme.primaryColorDark,
-                          txtSize: 15,
+                          txtSize: 8,
                         ),
                   title: "Enter Details",
                   content: FormDialog(
@@ -54,6 +54,7 @@ class SupportScreen extends StatelessWidget {
             height: 30,
           ),
           Container(
+            //alignment: Alignment.center,
             width: MediaQuery.of(context).size.width,
             child: Obx(
               () => sCtrl.isLoading.value
@@ -68,42 +69,58 @@ class SupportScreen extends StatelessWidget {
                           sortAscending: true,
                           columns: [
                             DataColumn(
-                              label: SelectableText(
-                                "Sr No.",
-                                style: kInterText.copyWith(
-                                  fontSize: 15,
-                                  color: theme.accentColor,
-                                  fontWeight: FontWeight.w700,
+                              label: Flexible(
+                                child: FittedBox(
+                                  child: SelectableText(
+                                    "Sr No.",
+                                    style: kInterText.copyWith(
+                                      fontSize: 8,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                             DataColumn(
-                              label: SelectableText(
-                                "Support Type",
-                                style: kInterText.copyWith(
-                                  fontSize: 15,
-                                  color: theme.accentColor,
-                                  fontWeight: FontWeight.w700,
+                              label: Flexible(
+                                child: FittedBox(
+                                  child: SelectableText(
+                                    "Support Type",
+                                    style: kInterText.copyWith(
+                                      fontSize: 8,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                             DataColumn(
-                              label: SelectableText(
-                                "Support Data",
-                                style: kInterText.copyWith(
-                                  fontSize: 15,
-                                  color: theme.accentColor,
-                                  fontWeight: FontWeight.w700,
+                              label: Flexible(
+                                child: FittedBox(
+                                  child: SelectableText(
+                                    "Support Data",
+                                    style: kInterText.copyWith(
+                                      fontSize: 8,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
                             DataColumn(
-                              label: SelectableText(
-                                "Actions",
-                                style: kInterText.copyWith(
-                                  fontSize: 15,
-                                  color: theme.accentColor,
-                                  fontWeight: FontWeight.w700,
+                              label: Flexible(
+                                child: FittedBox(
+                                  child: SelectableText(
+                                    "Actions",
+                                    style: kInterText.copyWith(
+                                      fontSize: 8,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -116,30 +133,36 @@ class SupportScreen extends StatelessWidget {
                                         SelectableText(
                                           "${index + 1}",
                                           style: kInterText.copyWith(
-                                            fontSize: 12,
+                                            fontSize: 8,
                                             color: theme.unselectedWidgetColor,
                                             fontWeight: FontWeight.w500,
                                           ),
                                         ),
                                       ),
                                       DataCell(
-                                        SelectableText(
-                                          sCtrl.sData[index]['supportType'] ??
-                                              "-",
-                                          style: kInterText.copyWith(
-                                            fontSize: 12,
-                                            color: theme.unselectedWidgetColor,
-                                            fontWeight: FontWeight.w500,
+                                        FittedBox(
+                                          child: SelectableText(
+                                            sCtrl.sData[index]['supportType'] ??
+                                                "-",
+                                            style: kInterText.copyWith(
+                                              fontSize: 8,
+                                              color:
+                                                  theme.unselectedWidgetColor,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
                                         ),
                                       ),
                                       DataCell(
-                                        SelectableText(
-                                          sCtrl.sData[index]['data'] ?? "-",
-                                          style: kInterText.copyWith(
-                                            fontSize: 12,
-                                            color: theme.unselectedWidgetColor,
-                                            fontWeight: FontWeight.w500,
+                                        FittedBox(
+                                          child: SelectableText(
+                                            sCtrl.sData[index]['data'] ?? "-",
+                                            style: kInterText.copyWith(
+                                              fontSize: 8,
+                                              color:
+                                                  theme.unselectedWidgetColor,
+                                              fontWeight: FontWeight.w500,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -150,52 +173,53 @@ class SupportScreen extends StatelessWidget {
                                               padding:
                                                   const EdgeInsets.all(8.0),
                                               child: IconButton(
-                                                  tooltip: "Edit Product",
-                                                  onPressed: () {
-                                                    Get.defaultDialog(
-                                                      confirm: sCtrl
-                                                              .isLoading.value
-                                                          ? Container(
-                                                              height: 30,
-                                                              width: 30,
-                                                              child:
-                                                                  buildLoader(),
-                                                            )
-                                                          : button(
-                                                              onTap: () {
-                                                                if (sCtrl
-                                                                    .formKey
-                                                                    .currentState
-                                                                    .validate()) {
-                                                                  sCtrl.editData(
-                                                                      sCtrl.sData[
-                                                                          index]);
-                                                                  sCtrl
-                                                                      .loadData();
+                                                tooltip: "Edit Product",
+                                                onPressed: () {
+                                                  Get.defaultDialog(
+                                                    confirm: sCtrl
+                                                            .isLoading.value
+                                                        ? Container(
+                                                            height: 30,
+                                                            width: 30,
+                                                            child:
+                                                                buildLoader(),
+                                                          )
+                                                        : button(
+                                                            onTap: () {
+                                                              if (sCtrl.formKey
+                                                                  .currentState
+                                                                  .validate()) {
+                                                                sCtrl.editData(
+                                                                    sCtrl.sData[
+                                                                        index]);
+                                                                sCtrl
+                                                                    .loadData();
 
-                                                                  Get.back();
-                                                                } else
-                                                                  return null;
-                                                              },
-                                                              buttonTxt: "Save",
-                                                              buttonColor: theme
-                                                                  .buttonColor,
-                                                              txtColor: theme
-                                                                  .primaryColorDark,
-                                                              txtSize: 15,
-                                                            ),
-                                                      title: "Enter Details",
-                                                      content: FormDialog(
-                                                        count: sCtrl
-                                                            .textFieldCount,
-                                                        labelText: [
-                                                          "Enter  Support type",
-                                                          "Enter Support Data"
-                                                        ].obs,
-                                                      ),
-                                                    );
-                                                  },
-                                                  icon: Icon(Icons.edit)),
+                                                                Get.back();
+                                                              } else
+                                                                return null;
+                                                            },
+                                                            buttonTxt: "Save",
+                                                            buttonColor: theme
+                                                                .buttonColor,
+                                                            txtColor: theme
+                                                                .primaryColorDark,
+                                                            txtSize: 8,
+                                                          ),
+                                                    title: "Enter Details",
+                                                    content: FormDialog(
+                                                      count:
+                                                          sCtrl.textFieldCount,
+                                                      labelText: [
+                                                        "Enter  Support type",
+                                                        "Enter Support Data"
+                                                      ].obs,
+                                                    ),
+                                                  );
+                                                },
+                                                icon: Icon(Icons.edit),
+                                                iconSize: 8,
+                                              ),
                                             ),
                                             Padding(
                                               padding:
@@ -216,7 +240,12 @@ class SupportScreen extends StatelessWidget {
                                                     ),
                                                     content: Column(
                                                       children: [
-                                                        TextButton(
+                                                        ElevatedButton(
+                                                            style: ButtonStyle(
+                                                                backgroundColor:
+                                                                    MaterialStateProperty
+                                                                        .all(theme
+                                                                            .primaryColor)),
                                                             onPressed: () {
                                                               sCtrl.deleteData(
                                                                   sCtrl.sData[
@@ -233,16 +262,21 @@ class SupportScreen extends StatelessWidget {
                                                                   .copyWith(
                                                                 color: theme
                                                                     .hintColor,
-                                                                fontSize: 15,
+                                                                fontSize: 8,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
                                                               ),
                                                             )),
                                                         SizedBox(
-                                                          height: 15,
+                                                          height: 8,
                                                         ),
-                                                        TextButton(
+                                                        ElevatedButton(
+                                                            style: ButtonStyle(
+                                                                backgroundColor:
+                                                                    MaterialStateProperty
+                                                                        .all(theme
+                                                                            .primaryColor)),
                                                             onPressed: () {
                                                               Get.back();
                                                             },
@@ -253,7 +287,7 @@ class SupportScreen extends StatelessWidget {
                                                                   .copyWith(
                                                                 color: theme
                                                                     .hintColor,
-                                                                fontSize: 15,
+                                                                fontSize: 8,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,
@@ -266,6 +300,7 @@ class SupportScreen extends StatelessWidget {
                                                 icon: Icon(
                                                   Icons.delete,
                                                 ),
+                                                iconSize: 8,
                                               ),
                                             )
                                           ],

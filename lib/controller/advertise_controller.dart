@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
+
+import '../app_config.dart';
 
 class ManageAdvertiseController extends GetxController {
   RxString adNameValue = "".obs;
@@ -33,11 +36,30 @@ class ManageAdvertiseController extends GetxController {
         isLoading.value = false;
         Get.back();
         loadAdData();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -51,11 +73,30 @@ class ManageAdvertiseController extends GetxController {
         isLoading.value = false;
         loadAdData();
         Get.back();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -72,11 +113,30 @@ class ManageAdvertiseController extends GetxController {
         isLoading.value = false;
         loadAdData();
         Get.back();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -96,13 +156,32 @@ class ManageAdvertiseController extends GetxController {
         // ignore: deprecated_member_use
         if (!result.isBlank) {
           adsData.value = result.results;
-        } else
-          return null;
+        } else {
+          isLoading.value = false;
+          final snackBar = SnackBar(
+            content: Text(
+              "Error ! Please try again.",
+              style: kInterText,
+            ),
+            elevation: 20.0,
+            backgroundColor: Colors.cyan,
+          );
+          ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+        }
         print("this is the list $adsData");
       }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }

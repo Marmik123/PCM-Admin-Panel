@@ -43,7 +43,7 @@ class ManageProducts extends StatelessWidget {
                           buttonTxt: "Save",
                           buttonColor: theme.buttonColor,
                           txtColor: theme.primaryColorDark,
-                          txtSize: 15,
+                          txtSize: 10,
                         ),
                   title: "Enter Details",
                   actions: [
@@ -54,7 +54,7 @@ class ManageProducts extends StatelessWidget {
                       buttonTxt: "Add Photo",
                       buttonColor: theme.buttonColor,
                       txtColor: theme.primaryColorDark,
-                      txtSize: 15,
+                      txtSize: 10,
                     ),
                   ],
                   content: FormDialog(
@@ -82,52 +82,72 @@ class ManageProducts extends StatelessWidget {
                             sortAscending: true,
                             columns: [
                               DataColumn(
-                                label: SelectableText(
-                                  "Sr No.",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Sr No.",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Products Name",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Products Name",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Description",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Description",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Product Photo",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Product Photo",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                               DataColumn(
-                                label: SelectableText(
-                                  "Actions",
-                                  style: kInterText.copyWith(
-                                    fontSize: 15,
-                                    color: theme.accentColor,
-                                    fontWeight: FontWeight.w700,
+                                label: Flexible(
+                                  child: FittedBox(
+                                    child: SelectableText(
+                                      "Actions",
+                                      style: kInterText.copyWith(
+                                        fontSize: 10,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -140,7 +160,7 @@ class ManageProducts extends StatelessWidget {
                                     SelectableText(
                                       "${index + 1}",
                                       style: kInterText.copyWith(
-                                        fontSize: 12,
+                                        fontSize: 10,
                                         color: theme.unselectedWidgetColor,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -152,7 +172,7 @@ class ManageProducts extends StatelessWidget {
                                               ['productName'] ??
                                           "-",
                                       style: kInterText.copyWith(
-                                        fontSize: 12,
+                                        fontSize: 10,
                                         color: theme.unselectedWidgetColor,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -164,7 +184,7 @@ class ManageProducts extends StatelessWidget {
                                               ['productDesc'] ??
                                           "-",
                                       style: kInterText.copyWith(
-                                        fontSize: 12,
+                                        fontSize: 10,
                                         color: theme.unselectedWidgetColor,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -172,10 +192,10 @@ class ManageProducts extends StatelessWidget {
                                   ),
                                   DataCell(
                                     SelectableText(
-                                      "${proCtrl.productsList[index]['productPhoto']}" ??
-                                          "-",
+                                      /* "${proCtrl.productsList[index]['productPhoto']}" */
+                                      "-",
                                       style: kInterText.copyWith(
-                                        fontSize: 12,
+                                        fontSize: 10,
                                         color: theme.unselectedWidgetColor,
                                         fontWeight: FontWeight.w500,
                                       ),
@@ -187,65 +207,67 @@ class ManageProducts extends StatelessWidget {
                                         Padding(
                                           padding: const EdgeInsets.all(8.0),
                                           child: IconButton(
-                                              tooltip: "Edit Product",
-                                              onPressed: () {
-                                                Get.defaultDialog(
-                                                  confirm: proCtrl
-                                                          .isLoading.value
-                                                      ? Container(
-                                                          height: 30,
-                                                          width: 30,
-                                                          child: buildLoader(),
-                                                        )
-                                                      : button(
-                                                          onTap: () {
-                                                            if (proCtrl.formKey
-                                                                .currentState
-                                                                .validate()) {
-                                                              proCtrl.editPro(
-                                                                  proCtrl.productsList[
-                                                                      index]);
+                                            tooltip: "Edit Product",
+                                            onPressed: () {
+                                              Get.defaultDialog(
+                                                confirm: proCtrl.isLoading.value
+                                                    ? Container(
+                                                        height: 30,
+                                                        width: 30,
+                                                        child: buildLoader(),
+                                                      )
+                                                    : button(
+                                                        onTap: () {
+                                                          if (proCtrl.formKey
+                                                              .currentState
+                                                              .validate()) {
+                                                            proCtrl.editPro(
+                                                                proCtrl.productsList[
+                                                                    index]);
 
-                                                              Get.back();
-                                                            } else
-                                                              return null;
-                                                          },
-                                                          buttonTxt: "Save",
-                                                          buttonColor:
-                                                              theme.buttonColor,
-                                                          txtColor: theme
-                                                              .primaryColorDark,
-                                                          txtSize: 15,
-                                                        ),
-                                                  title: "Enter Details",
-                                                  actions: [
-                                                    button(
-                                                      onTap: () {
-                                                        proCtrl.chooseFile();
-                                                      },
-                                                      buttonTxt: "Add Photo",
-                                                      buttonColor:
-                                                          theme.buttonColor,
-                                                      txtColor: theme
-                                                          .primaryColorDark,
-                                                      txtSize: 15,
-                                                    ),
-                                                  ],
-                                                  content: FormDialog(
-                                                    labelText: [
-                                                      "Enter Product Name",
-                                                      "Enter Product Description"
-                                                    ].obs,
+                                                            Get.back();
+                                                          } else
+                                                            return null;
+                                                        },
+                                                        buttonTxt: "Save",
+                                                        buttonColor:
+                                                            theme.buttonColor,
+                                                        txtColor: theme
+                                                            .primaryColorDark,
+                                                        txtSize: 10,
+                                                      ),
+                                                title: "Enter Details",
+                                                actions: [
+                                                  button(
+                                                    onTap: () {
+                                                      proCtrl.chooseFile();
+                                                    },
+                                                    buttonTxt: "Add Photo",
+                                                    buttonColor:
+                                                        theme.buttonColor,
+                                                    txtColor:
+                                                        theme.primaryColorDark,
+                                                    txtSize: 10,
                                                   ),
-                                                );
-                                              },
-                                              icon: Icon(Icons.edit)),
+                                                ],
+                                                content: FormDialog(
+                                                  labelText: [
+                                                    "Enter Product Name",
+                                                    "Enter Product Description"
+                                                  ].obs,
+                                                ),
+                                              );
+                                            },
+                                            icon: Icon(Icons.edit),
+                                            iconSize: 10,
+                                          ),
                                         ),
                                         SizedBox(
                                           width: 5,
                                         ),
                                         IconButton(
                                           tooltip: "Delete Product",
+                                          iconSize: 10,
                                           onPressed: () {
                                             Get.defaultDialog(
                                               title:
@@ -257,7 +279,12 @@ class ManageProducts extends StatelessWidget {
                                               ),
                                               content: Column(
                                                 children: [
-                                                  TextButton(
+                                                  ElevatedButton(
+                                                      style: ButtonStyle(
+                                                          backgroundColor:
+                                                              MaterialStateProperty
+                                                                  .all(theme
+                                                                      .primaryColor)),
                                                       onPressed: () {
                                                         proCtrl.deletePro(
                                                             proCtrl.productsList[
@@ -271,15 +298,20 @@ class ManageProducts extends StatelessWidget {
                                                             kInterText.copyWith(
                                                           color:
                                                               theme.hintColor,
-                                                          fontSize: 15,
+                                                          fontSize: 10,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
                                                       )),
                                                   SizedBox(
-                                                    height: 15,
+                                                    height: 10,
                                                   ),
-                                                  TextButton(
+                                                  ElevatedButton(
+                                                      style: ButtonStyle(
+                                                          backgroundColor:
+                                                              MaterialStateProperty
+                                                                  .all(theme
+                                                                      .primaryColor)),
                                                       onPressed: () {
                                                         Get.back();
                                                       },
@@ -289,7 +321,7 @@ class ManageProducts extends StatelessWidget {
                                                             kInterText.copyWith(
                                                           color:
                                                               theme.hintColor,
-                                                          fontSize: 15,
+                                                          fontSize: 10,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -305,10 +337,11 @@ class ManageProducts extends StatelessWidget {
                                         SizedBox(
                                           width: 5,
                                         ),
-                                        IconButton(
-                                            tooltip: "View Product",
-                                            onPressed: () {},
-                                            icon: Icon(Icons.rate_review))
+                                        /* IconButton(
+                                          tooltip: "View Product",
+                                          onPressed: () {},
+                                          icon: Icon(Icons.rate_review))
+                                    */
                                       ],
                                     ),
                                   ),

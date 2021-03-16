@@ -13,39 +13,41 @@ class Distributor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 30,
-        ),
-        button(
-            buttonColor: theme.buttonColor,
-            txtSize: 15,
-            txtColor: theme.primaryColorDark,
-            buttonTxt: "Add New",
-            onTap: () {
-              displayDialog(
-                context,
-                userCtrl,
-              );
-            }),
-        SizedBox(
-          height: 50,
-        ),
-        Container(
-            width: MediaQuery.of(context).size.width,
-            child: Obx(
-              () => userCtrl.isLoading.value
-                  ? Container(
-                      alignment: Alignment.center,
-                      height: 30,
-                      width: 30,
-                      child: buildLoader(),
-                    )
-                  : FittedBox(
-                      child: (userCtrl.distriInfo()?.isNotEmpty ?? false)
-                          ? DataTable(
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: 30,
+          ),
+          button(
+              buttonColor: theme.buttonColor,
+              txtSize: 15,
+              txtColor: theme.primaryColorDark,
+              buttonTxt: "Add New",
+              onTap: () {
+                displayDialog(
+                  context,
+                  userCtrl,
+                );
+              }),
+          SizedBox(
+            height: 50,
+          ),
+          Container(
+              width: MediaQuery.of(context).size.width,
+              child: Obx(
+                () => userCtrl.isLoading.value
+                    ? Container(
+                        alignment: Alignment.center,
+                        height: 30,
+                        width: 30,
+                        child: buildLoader(),
+                      )
+                    : (userCtrl.distriInfo()?.isNotEmpty ?? false)
+                        ? SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                          child: DataTable(
                               sortAscending: true,
                               columns: [
                                 DataColumn(
@@ -202,8 +204,8 @@ class Distributor extends StatelessWidget {
                                               "${index + 1}",
                                               style: kInterText.copyWith(
                                                 fontSize: 12,
-                                                color:
-                                                    theme.unselectedWidgetColor,
+                                                color: theme
+                                                    .unselectedWidgetColor,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
@@ -265,8 +267,8 @@ class Distributor extends StatelessWidget {
                                               "Document",
                                               style: kInterText.copyWith(
                                                 fontSize: 12,
-                                                color:
-                                                    theme.unselectedWidgetColor,
+                                                color: theme
+                                                    .unselectedWidgetColor,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
@@ -278,8 +280,8 @@ class Distributor extends StatelessWidget {
                                                   "-",
                                               style: kInterText.copyWith(
                                                 fontSize: 12,
-                                                color:
-                                                    theme.unselectedWidgetColor,
+                                                color: theme
+                                                    .unselectedWidgetColor,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
@@ -289,8 +291,8 @@ class Distributor extends StatelessWidget {
                                               "-",
                                               style: kInterText.copyWith(
                                                 fontSize: 12,
-                                                color:
-                                                    theme.unselectedWidgetColor,
+                                                color: theme
+                                                    .unselectedWidgetColor,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
@@ -302,8 +304,8 @@ class Distributor extends StatelessWidget {
                                               "-",
                                               style: kInterText.copyWith(
                                                 fontSize: 12,
-                                                color:
-                                                    theme.unselectedWidgetColor,
+                                                color: theme
+                                                    .unselectedWidgetColor,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
@@ -313,8 +315,8 @@ class Distributor extends StatelessWidget {
                                               "Shop Photo",
                                               style: kInterText.copyWith(
                                                 fontSize: 12,
-                                                color:
-                                                    theme.unselectedWidgetColor,
+                                                color: theme
+                                                    .unselectedWidgetColor,
                                                 fontWeight: FontWeight.w500,
                                               ),
                                             ),
@@ -331,7 +333,8 @@ class Distributor extends StatelessWidget {
                                               children: [
                                                 Padding(
                                                   padding:
-                                                      const EdgeInsets.all(8.0),
+                                                      const EdgeInsets.all(
+                                                          8.0),
                                                   child: IconButton(
                                                       tooltip: "Edit user",
                                                       onPressed: () {
@@ -356,8 +359,9 @@ class Distributor extends StatelessWidget {
                                                                   },
                                                                   buttonTxt:
                                                                       "Save",
-                                                                  buttonColor: theme
-                                                                      .buttonColor,
+                                                                  buttonColor:
+                                                                      theme
+                                                                          .buttonColor,
                                                                   txtColor: theme
                                                                       .primaryColorDark,
                                                                   txtSize: 15,
@@ -366,10 +370,10 @@ class Distributor extends StatelessWidget {
                                                               "Enter Details",
                                                           actions: [
                                                             button(
-                                                              onTap: () {
+                                                              /*onTap: () {
                                                                 userCtrl
                                                                     .chooseFile();
-                                                              },
+                                                              },*/
                                                               buttonTxt:
                                                                   "Add Photo",
                                                               buttonColor: theme
@@ -391,8 +395,8 @@ class Distributor extends StatelessWidget {
                                                           ),
                                                         );
                                                       },
-                                                      icon: Icon(
-                                                          Icons.edit_outlined)),
+                                                      icon: Icon(Icons
+                                                          .edit_outlined)),
                                                 ),
                                                 SizedBox(
                                                   width: 5,
@@ -407,16 +411,17 @@ class Distributor extends StatelessWidget {
                                           ),
                                         ],
                                       )),
-                            )
-                          : Center(
-                              child: SelectableText(
-                              "No data to display",
-                              style: kInterText.copyWith(
-                                  fontSize: 25, color: theme.accentColor),
-                            )),
-                    ),
-            ))
-      ],
+                            ),
+                        )
+                        : Center(
+                            child: SelectableText(
+                            "No data to display",
+                            style: kInterText.copyWith(
+                                fontSize: 25, color: theme.accentColor),
+                          )),
+              ))
+        ],
+      ),
     );
   }
 }

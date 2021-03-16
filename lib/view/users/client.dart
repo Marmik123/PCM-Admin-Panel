@@ -44,43 +44,17 @@ class Client extends StatelessWidget {
                         width: 30,
                         child: buildLoader(),
                       )
-                    : FittedBox(
-                        child: (userCtrl.distriInfo()?.isNotEmpty ?? false)
-                            ? DataTable(
-                                sortAscending: true,
-                                columns: [
-                                  DataColumn(
-                                    label: Expanded(
-                                      child: FittedBox(
-                                        child: SelectableText(
-                                          "Sr No.",
-                                          style: kInterText.copyWith(
-                                            fontSize: 15,
-                                            color: theme.accentColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(
-                                      child: FittedBox(
-                                        child: SelectableText(
-                                          "Full Name",
-                                          style: kInterText.copyWith(
-                                            fontSize: 15,
-                                            color: theme.accentColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(
+                    : (userCtrl.distriInfo()?.isNotEmpty ?? false)
+                        ? SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: DataTable(
+                              sortAscending: true,
+                              columns: [
+                                DataColumn(
+                                  label: Expanded(
+                                    child: FittedBox(
                                       child: SelectableText(
-                                        "Role",
+                                        "Sr No.",
                                         style: kInterText.copyWith(
                                           fontSize: 15,
                                           color: theme.accentColor,
@@ -89,10 +63,12 @@ class Client extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  DataColumn(
-                                    label: FittedBox(
+                                ),
+                                DataColumn(
+                                  label: Expanded(
+                                    child: FittedBox(
                                       child: SelectableText(
-                                        "Address",
+                                        "Full Name",
                                         style: kInterText.copyWith(
                                           fontSize: 15,
                                           color: theme.accentColor,
@@ -101,10 +77,105 @@ class Client extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  DataColumn(
-                                    label: Expanded(
+                                ),
+                                DataColumn(
+                                  label: Expanded(
+                                    child: SelectableText(
+                                      "Role",
+                                      style: kInterText.copyWith(
+                                        fontSize: 15,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: FittedBox(
+                                    child: SelectableText(
+                                      "Address",
+                                      style: kInterText.copyWith(
+                                        fontSize: 15,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: Expanded(
+                                    child: SelectableText(
+                                      "Document",
+                                      maxLines: 1,
+                                      style: kInterText.copyWith(
+                                        fontSize: 15,
+                                        color: theme.accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: Expanded(
+                                    child: FittedBox(
                                       child: SelectableText(
-                                        "Document",
+                                        "Mobile Number",
+                                        style: kInterText.copyWith(
+                                          fontSize: 15,
+                                          color: theme.accentColor,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: Expanded(
+                                    child: FittedBox(
+                                      child: SelectableText(
+                                        "Shop Name",
+                                        style: kInterText.copyWith(
+                                          fontSize: 15,
+                                          color: theme.accentColor,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: Expanded(
+                                    child: FittedBox(
+                                      child: SelectableText(
+                                        "Shop Location",
+                                        style: kInterText.copyWith(
+                                          fontSize: 15,
+                                          color: theme.accentColor,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: Expanded(
+                                    child: FittedBox(
+                                      child: SelectableText(
+                                        "Shop Photo",
+                                        style: kInterText.copyWith(
+                                          fontSize: 15,
+                                          color: theme.accentColor,
+                                          fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                DataColumn(
+                                  label: Expanded(
+                                    child: FittedBox(
+                                      child: SelectableText(
+                                        "isActive",
                                         maxLines: 1,
                                         style: kInterText.copyWith(
                                           fontSize: 15,
@@ -114,170 +185,38 @@ class Client extends StatelessWidget {
                                       ),
                                     ),
                                   ),
-                                  DataColumn(
-                                    label: Expanded(
-                                      child: FittedBox(
-                                        child: SelectableText(
-                                          "Mobile Number",
-                                          style: kInterText.copyWith(
-                                            fontSize: 15,
-                                            color: theme.accentColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
+                                ),
+                                DataColumn(
+                                  label: SelectableText(
+                                    "Actions",
+                                    style: kInterText.copyWith(
+                                      fontSize: 15,
+                                      color: theme.accentColor,
+                                      fontWeight: FontWeight.w700,
                                     ),
                                   ),
-                                  DataColumn(
-                                    label: Expanded(
-                                      child: FittedBox(
-                                        child: SelectableText(
-                                          "Shop Name",
-                                          style: kInterText.copyWith(
-                                            fontSize: 15,
-                                            color: theme.accentColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(
-                                      child: FittedBox(
-                                        child: SelectableText(
-                                          "Shop Location",
-                                          style: kInterText.copyWith(
-                                            fontSize: 15,
-                                            color: theme.accentColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(
-                                      child: FittedBox(
-                                        child: SelectableText(
-                                          "Shop Photo",
-                                          style: kInterText.copyWith(
-                                            fontSize: 15,
-                                            color: theme.accentColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: Expanded(
-                                      child: FittedBox(
-                                        child: SelectableText(
-                                          "isActive",
-                                          maxLines: 1,
-                                          style: kInterText.copyWith(
-                                            fontSize: 15,
-                                            color: theme.accentColor,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  DataColumn(
-                                    label: SelectableText(
-                                      "Actions",
-                                      style: kInterText.copyWith(
-                                        fontSize: 15,
-                                        color: theme.accentColor,
-                                        fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                                rows: List.generate(
-                                    userCtrl.distriInfo.length,
-                                    (index) => DataRow(
-                                          cells: [
-                                            DataCell(
-                                              SelectableText(
-                                                "${index + 1}",
-                                                style: kInterText.copyWith(
-                                                  fontSize: 12,
-                                                  color: theme
-                                                      .unselectedWidgetColor,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                ),
+                              ],
+                              rows: List.generate(
+                                  userCtrl.distriInfo.length,
+                                  (index) => DataRow(
+                                        cells: [
+                                          DataCell(
+                                            SelectableText(
+                                              "${index + 1}",
+                                              style: kInterText.copyWith(
+                                                fontSize: 12,
+                                                color:
+                                                    theme.unselectedWidgetColor,
+                                                fontWeight: FontWeight.w500,
                                               ),
                                             ),
-                                            DataCell(
-                                              FittedBox(
-                                                child: SelectableText(
-                                                  userCtrl.distriInfo[index]
-                                                          ['name'] ??
-                                                      "-",
-                                                  style: kInterText.copyWith(
-                                                    fontSize: 12,
-                                                    color: theme
-                                                        .unselectedWidgetColor,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            DataCell(
-                                              FittedBox(
-                                                child: SelectableText(
-                                                  userCtrl.distriInfo[index]
-                                                          ['role'] ??
-                                                      "-",
-                                                  style: kInterText.copyWith(
-                                                    fontSize: 12,
-                                                    color: theme
-                                                        .unselectedWidgetColor,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            DataCell(
-                                              FittedBox(
-                                                child: SelectableText(
-                                                  userCtrl.distriInfo[index][
-                                                          'address1'] /* +
-                                                          userCtrl.distriInfo[
-                                                              index]['landmark'] +
-                                                          userCtrl.distriInfo[
-                                                              index]['city'] +
-                                                          userCtrl.distriInfo[
-                                                              index]['state']*/
-                                                      ??
-                                                      "-",
-                                                  style: kInterText.copyWith(
-                                                    fontSize: 12,
-                                                    color: theme
-                                                        .unselectedWidgetColor,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            DataCell(
-                                              SelectableText(
-                                                "Document",
-                                                style: kInterText.copyWith(
-                                                  fontSize: 12,
-                                                  color: theme
-                                                      .unselectedWidgetColor,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                            ),
-                                            DataCell(
-                                              SelectableText(
+                                          ),
+                                          DataCell(
+                                            FittedBox(
+                                              child: SelectableText(
                                                 userCtrl.distriInfo[index]
-                                                        ['number'] ??
+                                                        ['name'] ??
                                                     "-",
                                                 style: kInterText.copyWith(
                                                   fontSize: 12,
@@ -287,10 +226,12 @@ class Client extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            DataCell(
-                                              SelectableText(
+                                          ),
+                                          DataCell(
+                                            FittedBox(
+                                              child: SelectableText(
                                                 userCtrl.distriInfo[index]
-                                                        ['shopName'] ??
+                                                        ['role'] ??
                                                     "-",
                                                 style: kInterText.copyWith(
                                                   fontSize: 12,
@@ -300,10 +241,19 @@ class Client extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            DataCell(
-                                              SelectableText(
-                                                userCtrl.distriInfo[index]
-                                                        ['shopName'] ??
+                                          ),
+                                          DataCell(
+                                            FittedBox(
+                                              child: SelectableText(
+                                                userCtrl.distriInfo[index][
+                                                        'address1'] /* +
+                                                        userCtrl.distriInfo[
+                                                            index]['landmark'] +
+                                                        userCtrl.distriInfo[
+                                                            index]['city'] +
+                                                        userCtrl.distriInfo[
+                                                            index]['state']*/
+                                                    ??
                                                     "-",
                                                 style: kInterText.copyWith(
                                                   fontSize: 12,
@@ -313,117 +263,166 @@ class Client extends StatelessWidget {
                                                 ),
                                               ),
                                             ),
-                                            DataCell(
-                                              SelectableText(
-                                                "Shop Photo",
-                                                style: kInterText.copyWith(
-                                                  fontSize: 12,
-                                                  color: theme
-                                                      .unselectedWidgetColor,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
+                                          ),
+                                          DataCell(
+                                            SelectableText(
+                                              "Document",
+                                              style: kInterText.copyWith(
+                                                fontSize: 12,
+                                                color:
+                                                    theme.unselectedWidgetColor,
+                                                fontWeight: FontWeight.w500,
                                               ),
                                             ),
-                                            DataCell(CupertinoSwitch(
-                                              value: userCtrl.isActive.value,
-                                              onChanged: (value) {
-                                                userCtrl.isActive.value = value;
-                                              },
-                                              activeColor: theme.accentColor,
-                                            )),
-                                            DataCell(
-                                              Row(
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsets.all(
-                                                            8.0),
-                                                    child: IconButton(
-                                                        tooltip: "Edit user",
-                                                        onPressed: () {
-                                                          /*userCtrl.editUserFlag
-                                                              .value = true;*/
-                                                          Get.defaultDialog(
-                                                            confirm: userCtrl
-                                                                    .isLoading
-                                                                    .value
-                                                                ? Container(
-                                                                    height: 30,
-                                                                    width: 30,
-                                                                    child:
-                                                                        buildLoader(),
-                                                                  )
-                                                                : button(
-                                                                    onTap: () {
-                                                                      userCtrl.editUser(
-                                                                          userCtrl
-                                                                              .distriInfo[index],
-                                                                          "Client");
-                                                                    },
-                                                                    buttonTxt:
-                                                                        "Save",
-                                                                    buttonColor:
-                                                                        theme
-                                                                            .buttonColor,
-                                                                    txtColor: theme
-                                                                        .primaryColorDark,
-                                                                    txtSize: 15,
-                                                                  ),
-                                                            title:
-                                                                "Enter Details",
-                                                            actions: [
-                                                              button(
-                                                                onTap: () {
-                                                                  userCtrl
-                                                                      .chooseFile();
-                                                                },
-                                                                buttonTxt:
-                                                                    "Add Photo",
-                                                                buttonColor: theme
-                                                                    .buttonColor,
-                                                                txtColor: theme
-                                                                    .primaryColorDark,
-                                                                txtSize: 15,
-                                                              ),
-                                                            ],
-                                                            content: FormDialog(
-                                                              count: userCtrl
-                                                                  .textFieldCount,
-                                                              labelText: [
-                                                                "Enter Name",
-                                                                "Enter Address",
-                                                                "Enter Mobile Number",
-                                                                "Enter Shop Name",
-                                                              ].obs,
+                                          ),
+                                          DataCell(
+                                            SelectableText(
+                                              userCtrl.distriInfo[index]
+                                                      ['number'] ??
+                                                  "-",
+                                              style: kInterText.copyWith(
+                                                fontSize: 12,
+                                                color:
+                                                    theme.unselectedWidgetColor,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                          DataCell(
+                                            SelectableText(
+                                              userCtrl.distriInfo[index]
+                                                      ['shopName'] ??
+                                                  "-",
+                                              style: kInterText.copyWith(
+                                                fontSize: 12,
+                                                color:
+                                                    theme.unselectedWidgetColor,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                          DataCell(
+                                            SelectableText(
+                                              userCtrl.distriInfo[index]
+                                                      ['shopName'] ??
+                                                  "-",
+                                              style: kInterText.copyWith(
+                                                fontSize: 12,
+                                                color:
+                                                    theme.unselectedWidgetColor,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                          DataCell(
+                                            SelectableText(
+                                              "Shop Photo",
+                                              style: kInterText.copyWith(
+                                                fontSize: 12,
+                                                color:
+                                                    theme.unselectedWidgetColor,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                          ),
+                                          DataCell(CupertinoSwitch(
+                                            value: userCtrl.isActive.value,
+                                            onChanged: (value) {
+                                              userCtrl.isActive.value = value;
+                                            },
+                                            activeColor: theme.accentColor,
+                                          )),
+                                          DataCell(
+                                            Row(
+                                              children: [
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(8.0),
+                                                  child: IconButton(
+                                                      tooltip: "Edit user",
+                                                      onPressed: () {
+                                                        /*userCtrl.editUserFlag
+                                                            .value = true;*/
+                                                        Get.defaultDialog(
+                                                          confirm: userCtrl
+                                                                  .isLoading
+                                                                  .value
+                                                              ? Container(
+                                                                  height: 30,
+                                                                  width: 30,
+                                                                  child:
+                                                                      buildLoader(),
+                                                                )
+                                                              : button(
+                                                                  onTap: () {
+                                                                    userCtrl.editUser(
+                                                                        userCtrl
+                                                                            .distriInfo[index],
+                                                                        "Client");
+                                                                  },
+                                                                  buttonTxt:
+                                                                      "Save",
+                                                                  buttonColor: theme
+                                                                      .buttonColor,
+                                                                  txtColor: theme
+                                                                      .primaryColorDark,
+                                                                  txtSize: 15,
+                                                                ),
+                                                          title:
+                                                              "Enter Details",
+                                                          actions: [
+                                                            button(
+                                                              onTap: () {
+                                                                /* userCtrl
+                                                                    .chooseFile();*/
+                                                              },
+                                                              buttonTxt:
+                                                                  "Add Photo",
+                                                              buttonColor: theme
+                                                                  .buttonColor,
+                                                              txtColor: theme
+                                                                  .primaryColorDark,
+                                                              txtSize: 15,
                                                             ),
-                                                          );
-                                                        },
-                                                        icon: Icon(Icons
-                                                            .edit_outlined)),
-                                                  ),
-                                                  SizedBox(
-                                                    width: 5,
-                                                  ),
-/*
-                                                  IconButton(
-                                                      tooltip: "View User",
-                                                      onPressed: () {},
+                                                          ],
+                                                          content: FormDialog(
+                                                            count: userCtrl
+                                                                .textFieldCount,
+                                                            labelText: [
+                                                              "Enter Name",
+                                                              "Enter Address",
+                                                              "Enter Mobile Number",
+                                                              "Enter Shop Name",
+                                                            ].obs,
+                                                          ),
+                                                        );
+                                                      },
                                                       icon: Icon(
-                                                          Icons.rate_review))
+                                                          Icons.edit_outlined)),
+                                                ),
+                                                SizedBox(
+                                                  width: 5,
+                                                ),
+/*
+                                                IconButton(
+                                                    tooltip: "View User",
+                                                    onPressed: () {},
+                                                    icon: Icon(
+                                                        Icons.rate_review))
 */
-                                                ],
-                                              ),
+                                              ],
                                             ),
-                                          ],
-                                        )),
-                              )
-                            : Center(
-                                child: SelectableText(
-                                "No data to display",
-                                style: kInterText.copyWith(
-                                    fontSize: 25, color: theme.accentColor),
-                              )),
-                      ),
+                                          ),
+                                        ],
+                                      )),
+                            ),
+                          )
+                        : Center(
+                            child: SelectableText(
+                            "No data to display",
+                            style: kInterText.copyWith(
+                                fontSize: 25, color: theme.accentColor),
+                          )),
               ))
         ],
       ),

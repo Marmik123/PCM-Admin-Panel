@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-import 'package:pcm_admin/view/home_screen.dart';
+import 'package:pcm_admin/view/sign_in_screen.dart';
 
 const String parse_App_Id = "849F7316D6729D5A14451E65AF5E1";
 const String parse_MasterKey = "A2F3518273BE94F51A3BD44CBAC5E";
@@ -34,6 +34,6 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'PCM',
         theme: ThemeData.dark(),
-        home: HomeScreen());
+        home: SignIn());
   }
 }

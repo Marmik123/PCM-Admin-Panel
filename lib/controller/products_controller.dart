@@ -1,9 +1,12 @@
-import 'package:file_picker/file_picker.dart';
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 //import 'package:image_picker/image_picker.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
-import 'package:path/path.dart';
+
+import '../app_config.dart';
 
 class ProductsController extends GetxController {
   RxBool isLoading = false.obs;
@@ -23,12 +26,14 @@ class ProductsController extends GetxController {
     print("register product called");
     isLoading.value = true;
     try {
+      print("trying to register");
       List<ParseWebFile> fileListData = List.generate(
-          fileList.length,
-          (index) => ParseWebFile(
+          fileList.length, (index) => fileList[index]
+          /*ParseWebFile(
                 fileList()[index],
                 name: basename(fileList()[index].path),
-              ));
+              )*/
+          );
       print("Here is filelistData");
       print(fileListData);
       ParseObject proData = ParseObject('Products')
@@ -41,11 +46,30 @@ class ProductsController extends GetxController {
         isLoading.value = false;
         loadPro();
         Get.back();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -59,7 +83,7 @@ class ProductsController extends GetxController {
       ParseResponse result = await proData.query();
       print(result);
       print("result starts");
-      print(result.result);
+      print(result.results);
       print("result end");
       if (result.success) {
         print("if block ");
@@ -67,10 +91,30 @@ class ProductsController extends GetxController {
 
         // ignore: deprecated_member_use
         productsList(result.results);
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
       }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -89,11 +133,30 @@ class ProductsController extends GetxController {
         isLoading.value = false;
         loadPro();
         Get.back();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -107,32 +170,67 @@ class ProductsController extends GetxController {
         isLoading.value = false;
         loadPro();
         Get.back();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
   }
 
   Future<void> chooseFile() async {
-    FilePickerResult result = await FilePicker.platform.pickFiles();
-
+    //FilePickerResult result = await FilePicker.platform.pickFiles();
+    PickedFile result =
+        await ImagePicker.platform.pickImage(source: ImageSource.gallery);
+    ParseFileBase parseFile;
     if (result != null) {
       print(result);
       try {
         print('try executed');
-        var file = Image.memory(result.files.single.bytes);
+        //var file = Image.memory(result.files.single.bytes);
+        ParseWebFile file = ParseWebFile(null, name: null, url: result.path);
+        await file.download();
+        parseFile = ParseWebFile(file.file, name: file.name);
         print(file);
-        filename = result.files.single.name;
-        print(filename);
-        fileList.add(file);
+        print("parseFile is $parseFile");
+        //filename = result.files.single.name;
+        //print(filename);
+        fileList.add(parseFile);
         print(fileList.length);
         print('sdsssdsds $fileList');
+        proData.selectKeys("fileImage", parseFile);
       } catch (e) {
         print(e);
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
         return e;
       }
     } else {

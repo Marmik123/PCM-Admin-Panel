@@ -32,7 +32,8 @@ dependencies:
   google_fonts: ^1.1.1
   get_storage: ^1.4.0
   parse_server_sdk_flutter: ^2.1.0
-  file_picker: ^2.1.6
+  image_picker: ^0.6.7
+  image_picker_for_web: ^0.1.0
   path: ^1.8.0
 
 

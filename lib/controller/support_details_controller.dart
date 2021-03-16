@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk.dart';
 
+import '../app_config.dart';
+
 class SupportDetailsController extends GetxController {
   RxBool isLoading = false.obs;
   RxString sType = "".obs;
@@ -27,11 +29,30 @@ class SupportDetailsController extends GetxController {
         isLoading.value = false;
         loadData();
         Get.back();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -46,11 +67,30 @@ class SupportDetailsController extends GetxController {
         isLoading.value = false;
         loadData();
         Get.back();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -68,10 +108,30 @@ class SupportDetailsController extends GetxController {
         isLoading.value = false;
         sData(result.results);
         print("this is the list $sData");
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
       }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
@@ -85,11 +145,30 @@ class SupportDetailsController extends GetxController {
         isLoading.value = false;
         print("deleted successfully");
         loadData();
-      } else
-        return null;
+      } else {
+        isLoading.value = false;
+        final snackBar = SnackBar(
+          content: Text(
+            "Error ! Please try again.",
+            style: kInterText,
+          ),
+          elevation: 20.0,
+          backgroundColor: Colors.cyan,
+        );
+        ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
+      }
     } catch (e) {
       isLoading.value = false;
       print("default error---" + e);
+      final snackBar = SnackBar(
+        content: Text(
+          "Error ! Please try again.",
+          style: kInterText,
+        ),
+        elevation: 20.0,
+        backgroundColor: Colors.cyan,
+      );
+      ScaffoldMessenger.of(Get.context).showSnackBar(snackBar);
     } finally {
       print("Finally executed");
     }
